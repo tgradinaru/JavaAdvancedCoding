@@ -7,13 +7,13 @@ public class SimulateClass {
     public static void main(String[] args) {
         createStudentsTrainersAndClasses();
 //        printStudents();
-//        printTrainers();
+
 
 
     }
 
     private static void createStudentsTrainersAndClasses() {
-        Student student01 = new Student("XXX", "xxx", LocalDate.of(1980, Month.DECEMBER, 31), false);
+        Student student01 = new Student("XXXXX", "xxx", LocalDate.of(1980, Month.DECEMBER, 31), false);
         Student student02 = new Student("AAA", "aaa", LocalDate.of(1980, Month.DECEMBER, 31), false);
         Student student03 = new Student("BBB", "bbb", LocalDate.of(1982, Month.DECEMBER, 31), false);
         Student student04 = new Student("CCC", "ccc", LocalDate.of(1985, Month.DECEMBER, 31), false);
