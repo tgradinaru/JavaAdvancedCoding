@@ -11,6 +11,10 @@ public abstract class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
     @Override
     public String toString() {
         return "Person{ " +

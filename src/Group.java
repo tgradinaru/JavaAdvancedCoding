@@ -16,6 +16,10 @@ public class Group {
         }
     }
 
+    public Set<Student> getStudentList() {
+        return studentList;
+    }
+
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
     }

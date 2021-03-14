@@ -1,9 +1,6 @@
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class SimulateClass {
 
@@ -13,11 +10,14 @@ public class SimulateClass {
     private static List<Group> groups;
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         createStudentsTrainersAndClasses();
         printStudents();
         printTrainers();
         printGroups();
+        printStudentsAlphabetically();
+        printMaxNoOfStudentsFromGroup_classicMethod();
+        printAllMaxNoOfStudentsFromGroup_classicMethod();
     }
 
     private static void printTrainers() {
@@ -32,13 +32,56 @@ public class SimulateClass {
         System.out.println(groups);
     }
 
-    private static void createStudentsTrainersAndClasses(){
+    private static void printMaxNoOfStudentsFromGroup_classicMethod() { ////classic method
+        Group maxSizeGroup = new Group(null, new LinkedHashSet<>());
+        for (Group group : groups) {
+            if (group.getStudentList().size() > maxSizeGroup.getStudentList().size()) {
+                maxSizeGroup = group;
+            }
+        }
+        System.out.println("Max group size is " + maxSizeGroup);
+    }
+
+    private static void printAllMaxNoOfStudentsFromGroup_classicMethod() { ////classic method
+
+        List<Group> groupList = new ArrayList<>();
+
+        Group maxSizeGroup = new Group(null, new LinkedHashSet<>());
+
+        for (Group group : groups) {
+
+            if (group.getStudentList().size() > maxSizeGroup.getStudentList().size()) {
+                maxSizeGroup = group;
+                groupList = new ArrayList<>();
+                groupList.add(group);
+
+            } else if (group.getStudentList().size() == maxSizeGroup.getStudentList().size()) {
+                groupList.add(group);
+            }
+        }
+        System.out.println("List of maximum groups " + groupList);
+    }
+
+    private static void printMaxNoOfStudentsFromGroup_functionalMethod() {  ////classic method
+
+    }
+
+    private static void printStudentsAlphabetically() {
+        students.stream()
+                .sorted(Comparator.comparing(Student::getLastName))
+                .forEach(System.out::println);
+
+        //.sorted(Comparator.comparing(student -> student.getLastName()))
+        //.forEach(student -> System.out.println(student));
+    }
+
+    private static void createStudentsTrainersAndClasses() {
         addStudents();
         addTrainers();
         addGroups();
     }
 
-    private static void addGroups(){
+    private static void addGroups() {
         Group group1 = new Group(trainer01, students1);
         Group group2 = new Group(trainer02, students2);
         Group group3 = new Group(trainer03, students3);
@@ -68,7 +111,7 @@ public class SimulateClass {
         Student student09 = new Student("HHH", "hhh", LocalDate.of(2000, Month.DECEMBER, 31), true);
         Student student10 = new Student("III", "iii", LocalDate.of(2001, Month.DECEMBER, 31), false);
 
-        students = new HashSet<>();
+        students = new LinkedHashSet<>();
         students.add(student01);
         students.add(student02);
         students.add(student03);
@@ -80,21 +123,21 @@ public class SimulateClass {
         students.add(student09);
         students.add(student10);
 
-        students1 = new HashSet<>();
+        students1 = new LinkedHashSet<>();
         students1.add(student01);
         students1.add(student02);
         students1.add(student03);
 
-        students2 = new HashSet<>();
+        students2 = new LinkedHashSet<>();
         students2.add(student04);
         students2.add(student05);
         students2.add(student06);
 
-        students3 = new HashSet<>();
+        students3 = new LinkedHashSet<>();
         students3.add(student07);
         students3.add(student08);
 
-        students4 = new HashSet<>();
+        students4 = new LinkedHashSet<>();
         students4.add(student09);
         students4.add(student10);
     }
