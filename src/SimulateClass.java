@@ -18,6 +18,7 @@ public class SimulateClass {
         printStudentsAlphabetically();
         printMaxNoOfStudentsFromGroup_classicMethod();
         printAllMaxNoOfStudentsFromGroup_classicMethod();
+        printStudentsYoungerThan(25);
     }
 
     private static void printTrainers() {
@@ -63,8 +64,18 @@ public class SimulateClass {
     }
 
     private static void printMaxNoOfStudentsFromGroup_functionalMethod() {  ////classic method
-
+       /* groups.stream()
+                .max(Comparator.comparing(Group::))
+        */
     }
+
+    private static void printStudentsYoungerThan(int age) {
+        students.stream()
+                .filter(student -> student.getAge() < age)
+        .forEach(System.out::println);
+        //.forEach(student -> System.out.println(student));
+    }
+
 
     private static void printStudentsAlphabetically() {
         students.stream()

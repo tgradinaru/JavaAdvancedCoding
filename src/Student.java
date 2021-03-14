@@ -12,6 +12,11 @@ public class Student extends Person {
         return super.getLastName();
     }
 
+
+    public int getAge(){
+        return LocalDate.now().getYear() - super.getDateOfBirth().getYear();
+    }
+
     @Override
     public String toString() {
         return super.toString() +

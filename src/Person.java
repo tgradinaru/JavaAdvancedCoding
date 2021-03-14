@@ -15,6 +15,12 @@ public abstract class Person {
         return lastName;
     }
 
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+
+
     @Override
     public String toString() {
         return "Person{ " +
